@@ -64,8 +64,9 @@ class CategoriesController < ApplicationController
       @category = Category.find(params.expect(:id))
     end
 
-    # Only allow a list of trusted parameters through.
+    # Name is expected to be a category param.
     def category_params
-      params.fetch(:category, {})
+      params.expect(category: [ :name ])
     end
+   
 end
