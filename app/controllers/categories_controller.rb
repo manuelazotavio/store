@@ -66,7 +66,7 @@ class CategoriesController < ApplicationController
 
     # Name is expected to be a category param.
     def category_params
-      params.expect(category: [ :name ])
+      params.expect(category: [ :name, :user_id ])
     end
    
 end

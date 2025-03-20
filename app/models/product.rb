@@ -3,4 +3,5 @@ class Product < ApplicationRecord
   validates :price, :presence => true, comparison: { greater_than: 0 }
   validates :stock, :presence => true, comparison: { greater_than: 0 }
   belongs_to :category
+  belongs_to :user
 end
