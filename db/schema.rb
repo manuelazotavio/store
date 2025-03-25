@@ -24,8 +24,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_17_172938) do
     t.integer "user_id", null: false
     t.decimal "price"
     t.integer "stock"
+    t.integer "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
@@ -42,5 +44,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_17_172938) do
   end
 
   add_foreign_key "categories", "users"
+  add_foreign_key "products", "categories"
   add_foreign_key "products", "users"
 end
