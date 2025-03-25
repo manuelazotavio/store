@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+
   before_action :set_category, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
 
@@ -23,6 +24,7 @@ class CategoriesController < ApplicationController
   # POST /categories or /categories.json
   def create
     @category = Category.new(category_params)
+    @category.user = current_user
 
     respond_to do |format|
       if @category.save
@@ -66,7 +68,7 @@ class CategoriesController < ApplicationController
 
     # Name is expected to be a category param.
     def category_params
-      params.expect(category: [ :name, :user_id ])
+      params.require(:category).permit(:name)
     end
    
 end

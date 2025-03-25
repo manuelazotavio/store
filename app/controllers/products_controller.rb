@@ -23,6 +23,7 @@ class ProductsController < ApplicationController
   # POST /products or /products.json
   def create
     @product = Product.new(product_params)
+    @product.category = categories
 
     respond_to do |format|
       if @product.save
